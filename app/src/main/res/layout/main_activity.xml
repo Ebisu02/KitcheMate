@@ -13,15 +13,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/mainActivitySearchView"
+        <Toolbar
+            android:id="@+id/mainActivityToolBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_margin="8dp"
-            app:queryHint="@string/queryFindHint"
-            app:iconifiedByDefault="false"
-            android:background="@drawable/search_view_bg"
-            />
+            android:layout_height="64dp" >
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/mainActivitySearchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:queryHint="@string/queryFindHint"
+                app:iconifiedByDefault="false"
+                android:background="@drawable/search_view_bg"
+                />
+
+        </Toolbar>
 
         <ListView
             android:id="@+id/listViewRecipes"

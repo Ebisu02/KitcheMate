@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (uCursor.moveToFirst()) {
             do {
                 String recipeName = uCursor.getString(0);
-                res.add(new Recipe(R.drawable.not_found, recipeName));
+                res.add(new Recipe(R.drawable.ic_broken_img, recipeName));
             } while (uCursor.moveToNext());
         } else {
             Toast.makeText(context, "RecipesNotFound", Toast.LENGTH_SHORT).show();
@@ -119,7 +119,7 @@ public class DBHelper extends SQLiteOpenHelper {
             for (String ingredient : ingredients) {
                 for (String recipeIngredient: recipeIngredients) {
                     if (recipeIngredient.startsWith(ingredient)) {
-                        matchingRecipes.add(new Recipe(R.drawable.not_found, recipe.first));
+                        matchingRecipes.add(new Recipe(R.drawable.ic_broken_img, recipe.first));
                         matchingRecipeNames.add(recipe.first);
                         break;
                     }

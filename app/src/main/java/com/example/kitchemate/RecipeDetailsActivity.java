@@ -32,7 +32,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         TextView textViewHowToList = findViewById(R.id.textViewHowTo);
 
         fetchRecipe();
-        imageViewRecipe.setImageResource(R.drawable.ic_launcher_foreground);
+        // логика по работе с изображением:
+        imageViewRecipe.setImageResource(R.drawable.ic_broken_img);
+
+
         textViewRecipeName.setText(recipe_name);
         textViewIngredientsList.setText(recipe_ingr);
         textViewHowToList.setText(recipe_howto);
