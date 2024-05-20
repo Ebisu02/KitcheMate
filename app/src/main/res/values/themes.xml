@@ -11,6 +11,15 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="windowActionBar">false</item>
+
+
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.KitcheMate.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.KitcheMate.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KitcheMate.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

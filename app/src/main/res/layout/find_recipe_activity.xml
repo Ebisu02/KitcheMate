@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarRecipe1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ingredientsListView"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredient_list_title"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="16dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/findrecipe_edittext_watermark"
+        android:textColorHint="@color/gray"
+        android:textSize="15sp"
+        android:paddingHorizontal="8sp"
+        android:id="@+id/ingrEditText">
+
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/addIngrButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/findrecipe_buttonAdd_title"
+            android:onClick="addIngredient"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/findRecipeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="findByIndredients"
+            android:text="@string/findrecipe_buttonFind_title"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+</LinearLayout>
