@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:toolsNs="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navCatalog"
+            android:icon="@drawable/ic_menu_catalog"
+            android:title="Каталог">
+        </item>
+
+        <item
+            android:id="@+id/navFindRecipe"
+            android:icon="@drawable/ic_menu_search_recipe"
+            android:title="Найти рецепт">
+        </item>
+
+        <item
+            android:id="@+id/navAbout"
+            android:icon="@drawable/ic_menu_info"
+            android:title="Информация">
+        </item>
+
+    </group>
+
+</menu>

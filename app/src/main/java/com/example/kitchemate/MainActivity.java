@@ -1,8 +1,12 @@
 package com.example.kitchemate;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +19,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -23,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private ListView recipesListView;
     private ArrayList<String> recipeNamesList;
     private RecipeAdapter recipesListViewAdapter;
-    private Button navMenuButtonFindRecipes;
     private ArrayList<Recipe> recipesList;
     private Toolbar mainToolbar;
     private SearchView searchView;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,28 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        drawerLayout = findViewById(R.id.mainact);
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navCatalog:
+                        break;
+                    case R.id.navFindRecipe:
+                        Intent intent = new Intent(MainActivity.this, FindRecipesActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.navAbout:
+                        break;
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
 
         recipesListView = findViewById(R.id.listViewRecipes);
         recipesList = new ArrayList<Recipe>();
