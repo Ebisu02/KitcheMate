@@ -99,17 +99,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void filterRecipes(String query) {
         query = query.toLowerCase(Locale.ROOT);
+        ArrayList<String> filteredNames = new ArrayList<>();
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipesList) {
             if (recipe.getName().toLowerCase(Locale.ROOT).contains(query)) {
                 filteredRecipes.add(recipe);
+                filteredNames.add(recipe.getName());
             }
         }
-
         recipesListViewAdapter.clear();
         recipesListViewAdapter.addAll(filteredRecipes);
         recipesListViewAdapter.notifyDataSetChanged();
+        recipeNamesList = filteredNames;
     }
 
     public void navMenuButtonFindRecipesOnClickListener(View view) {
