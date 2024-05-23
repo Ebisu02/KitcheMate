@@ -1,16 +1,15 @@
-package com.example.kitchemate;
+package com.example.kitchemate.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.kitchemate.R;
+import com.example.kitchemate.adapter.RecipeAdapter;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,7 @@ public class FoundRecipesActivity extends AppCompatActivity {
 
         ingredients = getIntent().getStringArrayListExtra("ingredients");
 
-        Pair<ArrayList<Recipe>, ArrayList<String>> p = DBHelper.findRecipesByIngredients(this, ingredients);
+        /*Pair<ArrayList<Recipe>, ArrayList<String>> p = DBHelper.findRecipesByIngredients(this, ingredients);
 
         ArrayList<Recipe> foundRecipes = p.first;
         foundRecipeNames = p.second;
@@ -52,7 +51,7 @@ public class FoundRecipesActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 
     @Override

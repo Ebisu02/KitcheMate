@@ -1,4 +1,4 @@
-package com.example.kitchemate;
+package com.example.kitchemate.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.kitchemate.R;
+import com.example.kitchemate.api.ApiClient;
+import com.example.kitchemate.model.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,7 +38,13 @@ public class RecipeAdapter extends ArrayAdapter<Recipe> {
         ImageView imageView = convertView.findViewById(R.id.imageRecipe);
         TextView textView = convertView.findViewById(R.id.textRecipeName);
 
-        imageView.setImageResource(recipe.getImageResource());
+        Picasso.get()
+                .load(ApiClient.IMG_PARSE_URL + recipe.getImagePath())
+                .placeholder(R.drawable.ic_broken_img) // Изображение-заполнитель
+                .error(R.drawable.ic_broken_img) // Изображение при ошибке загрузки
+                .fit()
+                .centerCrop()
+                .into(imageView);
         textView.setText(recipe.getName());
 
         return convertView;

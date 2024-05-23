@@ -1,4 +1,4 @@
-package com.example.kitchemate;
+package com.example.kitchemate.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.kitchemate.R;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class FindRecipesActivity extends AppCompatActivity {
 
@@ -52,7 +53,6 @@ public class FindRecipesActivity extends AppCompatActivity {
             ingredientName.replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "");
             ingredientNamesList.add(ingredientName);
 
-            // Инициализируем контейнер для элемента списка добавленных продуктов
             LinearLayout ingredientListItem = new LinearLayout(FindRecipesActivity.this);
             ingredientListItem.setOrientation(LinearLayout.HORIZONTAL);
             ingredientListItem.setLayoutParams(new LinearLayout.LayoutParams(
@@ -60,7 +60,6 @@ public class FindRecipesActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
 
-            // Создаем новый TextView для ингредиента
             TextView textViewIngredient = new TextView(this);
             textViewIngredient.setPadding(64,2,2,2);
             textViewIngredient.setText(ingredientName);
@@ -69,7 +68,6 @@ public class FindRecipesActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1));
 
-            // Добавляем кнопку "крестик" для удаления ингредиента
             Button deleteButton = new Button(this);
             deleteButton.setText("✖");
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +87,6 @@ public class FindRecipesActivity extends AppCompatActivity {
             ingredientListItem.addView(deleteButton);
             ingredientListContainer.addView(ingredientListItem);
 
-            // Очищаем EditText после добавления ингредиента
             editTextIngredient.setText("");
         }
     }
