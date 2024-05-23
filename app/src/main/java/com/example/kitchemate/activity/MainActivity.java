@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView recipesListView;
     private RecipeAdapter recipesListViewAdapter;
     private ArrayList<Recipe> recipesList;
+    private ArrayList<Recipe> originalRecipesList;
     private Toolbar mainToolbar;
     private SearchView searchView;
     DrawerLayout drawerLayout;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         recipesListView = findViewById(R.id.listViewRecipes);
         recipesList = new ArrayList<>();
+        originalRecipesList = new ArrayList<>();
         recipesListViewAdapter = new RecipeAdapter(this, R.layout.recipe_list_item, recipesList);
         recipesListView.setAdapter(recipesListViewAdapter);
         apiService = ApiClient.getClient().create(ApiService.class);
@@ -110,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     recipesList.clear();
+                    originalRecipesList.clear();
                     recipesList.addAll(response.body());
+                    originalRecipesList.addAll(response.body());
                     recipesListViewAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to fetch recipes", Toast.LENGTH_SHORT).show();
@@ -126,22 +130,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void filterRecipes(String query) {
         query = query.toLowerCase(Locale.ROOT);
-        ArrayList<String> filteredNames = new ArrayList<>();
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
-
-        for (Recipe recipe : recipesList) {
+        for (Recipe recipe : originalRecipesList) {
             if (recipe.getName().toLowerCase(Locale.ROOT).contains(query)) {
                 filteredRecipes.add(recipe);
-                filteredNames.add(recipe.getName());
             }
         }
         recipesListViewAdapter.clear();
         recipesListViewAdapter.addAll(filteredRecipes);
         recipesListViewAdapter.notifyDataSetChanged();
-    }
-
-    public void navMenuButtonFindRecipesOnClickListener(View view) {
-        Intent intent = new Intent(MainActivity.this, FindRecipesActivity.class);
-        startActivity(intent);
     }
 }
