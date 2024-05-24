@@ -29,9 +29,6 @@
             android:name=".activity.RecipeDetailsActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".activity.FindRecipesActivity"
-            android:exported="true"></activity>
-        <activity
             android:name=".activity.FoundRecipesActivity"
             android:exported="true"></activity>
     </application>

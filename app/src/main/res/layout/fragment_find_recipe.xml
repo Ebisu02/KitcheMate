@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/findRecipeDrawerLayout">
+    tools:context=".fragment.FindRecipeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom">
 
@@ -59,7 +58,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/findrecipe_buttonAdd_title"
-            android:onClick="addIngredient"
             android:textColor="@color/white"
             android:layout_gravity="bottom"/>
 
@@ -67,21 +65,9 @@
             android:id="@+id/findRecipeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="findByIndredients"
             android:text="@string/findrecipe_buttonFind_title"
             android:textColor="@color/white"/>
 
     </LinearLayout>
 
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/findRecipeNavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/drawer_menu"
-        app:itemTextColor="@color/lavanda"
-        app:itemIconTint="@color/lavanda"/>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</FrameLayout>

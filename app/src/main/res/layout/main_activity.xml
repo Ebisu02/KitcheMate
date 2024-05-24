@@ -12,34 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <Toolbar
-            android:id="@+id/mainActivityToolBar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@color/neutral"
-            android:elevation="4dp">
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container">
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/mainActivitySearchView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:queryHint="@string/queryFindHint"
-                app:iconifiedByDefault="false"
-                android:background="@drawable/search_view_bg"
-                />
-
-        </Toolbar>
-
-        <ListView
-            android:id="@+id/listViewRecipes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="0dp"
-            android:paddingHorizontal="4dp">
-        </ListView>
-
+        </FrameLayout>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

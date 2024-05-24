@@ -1,74 +1,82 @@
-package com.example.kitchemate.activity;
+package com.example.kitchemate.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.example.kitchemate.R;
-import com.google.android.material.navigation.NavigationView;
+import com.example.kitchemate.activity.FoundRecipesActivity;
 
 import java.util.ArrayList;
 
-public class FindRecipesActivity extends AppCompatActivity {
+public class FindRecipeFragment extends Fragment {
 
     private ArrayList<String> ingredientNamesList = new ArrayList<>();
     private LinearLayout ingredientListContainer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.find_recipe_activity);
-
-        Toolbar toolbar = findViewById(R.id.toolbarRecipe1);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Toolbar toolbar = getView().findViewById(R.id.toolbarRecipe1);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionBar.setTitle(R.string.findrecipe_menu_title);
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        ingredientListContainer = findViewById(R.id.ingredientsListView);
-        DrawerLayout drawerLayout = findViewById(R.id.findRecipeDrawerLayout);
-        NavigationView navigationView = findViewById(R.id.findRecipeNavigationView);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-
+        ingredientListContainer = getView().findViewById(R.id.ingredientsListView);
+        Button buttonAdd = getView().findViewById(R.id.addIngrButton);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navCatalog:
-
-                        break;
-                    case R.id.navFindRecipe:
-                        break;
-                    case R.id.navAbout:
-                        break;
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+            public void onClick(View view) {
+                addIngredient(view);
+            }
+        });
+        Button buttonFindRecipe = getView().findViewById(R.id.findRecipeButton);
+        buttonFindRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findByIndredients(view);
             }
         });
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_find_recipe, container, false);
+    }
+
     public void findByIndredients(View view) {
-        Intent intent = new Intent(this, FoundRecipesActivity.class);
+        Intent intent = new Intent(getContext(), FoundRecipesActivity.class);
         intent.putStringArrayListExtra("ingredients", ingredientNamesList);
         startActivity(intent);
     }
 
     public void addIngredient(View view) {
-        EditText editTextIngredient = findViewById(R.id.ingrEditText);
+        EditText editTextIngredient = getView().findViewById(R.id.ingrEditText);
         String ingredientName = editTextIngredient.getText().toString().trim();
 
         if (!ingredientName.isEmpty()) {
@@ -77,14 +85,14 @@ public class FindRecipesActivity extends AppCompatActivity {
             ingredientName.replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "");
             ingredientNamesList.add(ingredientName);
 
-            LinearLayout ingredientListItem = new LinearLayout(FindRecipesActivity.this);
+            LinearLayout ingredientListItem = new LinearLayout(getContext());
             ingredientListItem.setOrientation(LinearLayout.HORIZONTAL);
             ingredientListItem.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
 
-            TextView textViewIngredient = new TextView(this);
+            TextView textViewIngredient = new TextView(getContext());
             textViewIngredient.setPadding(64,2,2,2);
             textViewIngredient.setText(ingredientName);
             textViewIngredient.setLayoutParams(new LinearLayout.LayoutParams(
@@ -92,7 +100,7 @@ public class FindRecipesActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1));
 
-            Button deleteButton = new Button(this);
+            Button deleteButton = new Button(getContext());
             deleteButton.setText("✖");
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,14 +121,5 @@ public class FindRecipesActivity extends AppCompatActivity {
 
             editTextIngredient.setText("");
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

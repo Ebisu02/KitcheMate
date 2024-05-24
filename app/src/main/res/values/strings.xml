@@ -12,11 +12,13 @@
     <string name="ingredient_list_title">Ингредиенты</string>
     <string name="howto_title">Как готовить</string>
     <string name="waytocook_title">Способ приготовления</string>
-    <string name="findrecipe_menu_title">- Найти рецепт</string>
+    <string name="findrecipe_menu_title">Найти рецепт</string>
     <string name="findrecipe_edittext_watermark">Введите название продукта, который вы хотите добавить.</string>
     <string name="findrecipe_buttonAdd_title">Добавить</string>
     <string name="findrecipe_buttonFind_title">Найти</string>
     <string name="search">Поиск</string>
     <string name="queryFindHint">Поиск рецепта</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
