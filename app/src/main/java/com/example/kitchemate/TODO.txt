@@ -1,10 +1,6 @@
 TODO:
-FindRecipeActivity
-TODO:
 FoundRecipesActivity
 TODO:
 About Activity
 TODO:
-Toolbar in MainActivity
-TODO:
-Design
+Design (Анимация прогрузки, когда подтягиваются записи с севрера)
