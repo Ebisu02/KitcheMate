@@ -55,6 +55,7 @@ public class FindRecipeFragment extends Fragment {
                 findByIndredients(view);
             }
         });
+        setRetainInstance(true);
     }
 
     @Override

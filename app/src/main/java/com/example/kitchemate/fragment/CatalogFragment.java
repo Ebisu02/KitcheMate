@@ -1,5 +1,6 @@
 package com.example.kitchemate.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -38,9 +39,18 @@ public class CatalogFragment extends Fragment {
     private ArrayList<Recipe> originalRecipesList;
     private ApiService apiService;
 
+    public CatalogFragment(Context context) {
+        recipesList = new ArrayList<>();
+        originalRecipesList = new ArrayList<>();
+        recipesListViewAdapter = new RecipeAdapter(context, R.layout.recipe_list_item, recipesList);
+        apiService = ApiClient.getClient().create(ApiService.class);
+        fetchRecipes();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -49,12 +59,7 @@ public class CatalogFragment extends Fragment {
         searchView.clearFocus();
 
         recipesListView = getView().findViewById(R.id.listViewRecipes);
-        recipesList = new ArrayList<>();
-        originalRecipesList = new ArrayList<>();
-        recipesListViewAdapter = new RecipeAdapter(getContext(), R.layout.recipe_list_item, recipesList);
         recipesListView.setAdapter(recipesListViewAdapter);
-        apiService = ApiClient.getClient().create(ApiService.class);
-        fetchRecipes();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -82,6 +87,8 @@ public class CatalogFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        setRetainInstance(true);
     }
 
     @Override

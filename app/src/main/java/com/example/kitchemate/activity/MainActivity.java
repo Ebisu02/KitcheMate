@@ -48,14 +48,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         drawerLayout = findViewById(R.id.mainact);
         navigationView = findViewById(R.id.navigationView);
+
+        catalogFragment = new CatalogFragment(this);
+        findRecipeFragment = new FindRecipeFragment();
+        aboutFragment = new AboutFragment();
+
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CatalogFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, catalogFragment).commit();
             navigationView.setCheckedItem(R.id.navCatalog);
         }
 
-        catalogFragment = new CatalogFragment();
-        findRecipeFragment = new FindRecipeFragment();
-        aboutFragment = new AboutFragment();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
 
             @Override
