@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,9 +72,11 @@ public class FindRecipeFragment extends Fragment {
     }
 
     public void findByIndredients(View view) {
-        Intent intent = new Intent(getContext(), FoundRecipesActivity.class);
-        intent.putStringArrayListExtra("ingredients", ingredientNamesList);
-        startActivity(intent);
+        if (!ingredientNamesList.isEmpty()) {
+            Intent intent = new Intent(getContext(), FoundRecipesActivity.class);
+            intent.putStringArrayListExtra("ingredients", ingredientNamesList);
+            startActivity(intent);
+        }
     }
 
     public void addIngredient(View view) {
@@ -101,14 +104,21 @@ public class FindRecipeFragment extends Fragment {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1));
 
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,0,8,0);
             Button deleteButton = new Button(getContext());
             deleteButton.setText("✖");
+            deleteButton.setTextColor(getResources().getColor(R.color.gray));
+            deleteButton.setBackground(getResources().getDrawable(R.drawable.button_primary_selector));
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ingredientListContainer.removeView(ingredientListItem);
                     int pos = ingredientListContainer.indexOfChild(ingredientListItem);
                     if (pos != -1 && pos < ingredientNamesList.size()) {
+                        Log.e("LOG", ingredientNamesList.get(pos));
                         ingredientNamesList.remove(pos);
                     }
                 }

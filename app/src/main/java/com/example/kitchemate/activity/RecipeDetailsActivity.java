@@ -33,6 +33,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        actionBar.setTitle(R.string.app_name);
 
         recipe = new Recipe(
                 getIntent().getIntExtra("recipeId", 0),

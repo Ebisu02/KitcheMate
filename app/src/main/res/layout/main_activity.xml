@@ -27,7 +27,7 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/drawer_menu"
-        app:itemTextColor="@color/lavanda"
+        app:itemTextColor="@color/white"
         app:itemIconTint="@color/lavanda">
 
 
