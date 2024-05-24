@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        // TODO ЧТОБЫ БЛЯТЬ ОНО ПРИ СТИРАНИИ ТЕКСТА НЕ ПУСТОЕ БЫЛО
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
