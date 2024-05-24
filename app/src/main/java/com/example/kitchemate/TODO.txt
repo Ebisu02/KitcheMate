@@ -1,6 +1,4 @@
 TODO:
-FoundRecipesActivity
-TODO:
 About Activity
 TODO:
 Design (Анимация прогрузки, когда подтягиваются записи с севрера)
