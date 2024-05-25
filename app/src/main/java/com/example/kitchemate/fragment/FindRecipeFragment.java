@@ -81,12 +81,11 @@ public class FindRecipeFragment extends Fragment {
 
     public void addIngredient(View view) {
         EditText editTextIngredient = getView().findViewById(R.id.ingrEditText);
-        String ingredientName = editTextIngredient.getText().toString().trim();
+        final String ingredientName = editTextIngredient.getText().toString().trim()
+                .toLowerCase().replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "");
 
         if (!ingredientName.isEmpty()) {
 
-            ingredientName = ingredientName.toLowerCase();
-            ingredientName.replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "");
             ingredientNamesList.add(ingredientName);
 
             LinearLayout ingredientListItem = new LinearLayout(getContext());
@@ -116,11 +115,7 @@ public class FindRecipeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     ingredientListContainer.removeView(ingredientListItem);
-                    int pos = ingredientListContainer.indexOfChild(ingredientListItem);
-                    if (pos != -1 && pos < ingredientNamesList.size()) {
-                        Log.e("LOG", ingredientNamesList.get(pos));
-                        ingredientNamesList.remove(pos);
-                    }
+                    ingredientNamesList.remove(ingredientName);
                 }
             });
 

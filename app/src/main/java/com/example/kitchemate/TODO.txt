@@ -1,7 +1,0 @@
-
-TODO:
-About Activity
-TODO:
-Фикс поиска рецептов при пустом списке ингридиентов
-
-//https://habr.com/ru/articles/154931/
