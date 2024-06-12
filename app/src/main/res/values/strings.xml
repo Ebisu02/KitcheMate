@@ -18,7 +18,13 @@
     <string name="findrecipe_buttonFind_title">Найти</string>
     <string name="search">Поиск</string>
     <string name="queryFindHint">Поиск рецепта</string>
-    <string name="about">Hello blank fragment</string>
-    <string name="aboutTitle">Информация</string>
+    <string name="about">
+        KitchenMate - приложение для поиска рецептов. Оно было сделано для упрощения жизни пользователя, чтобы он не думал, что ему приготовить и мог найти это в подобных приложениях.
+    </string>
+    <string name="author">
+        Данное приложение было сделано не для коммерческого использования. Оно является дипломной работой студента 4-ого курса, группы ИП-015, Ососова Сергея Андреевича.
+    </string>
+    <string name="authorTitle">Автор</string>
+    <string name="aboutTitle">О приложении</string>
 
 </resources>

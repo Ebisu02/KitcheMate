@@ -20,8 +20,7 @@
             android:layout_margin="8dp"
             app:queryHint="@string/queryFindHint"
             app:iconifiedByDefault="false"
-            android:background="@drawable/search_view_bg"
-            />
+            android:background="@drawable/search_view_bg" />
 
     </Toolbar>
 
