@@ -1,39 +1,18 @@
 package com.example.kitchemate.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.kitchemate.R;
 import com.example.kitchemate.fragment.AboutFragment;
 import com.example.kitchemate.fragment.CatalogFragment;
 import com.example.kitchemate.fragment.FindRecipeFragment;
-import com.example.kitchemate.model.Recipe;
-import com.example.kitchemate.adapter.RecipeAdapter;
-import com.example.kitchemate.api.ApiClient;
-import com.example.kitchemate.api.ApiService;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;

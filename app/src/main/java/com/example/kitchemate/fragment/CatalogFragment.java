@@ -3,20 +3,17 @@ package com.example.kitchemate.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
 
 import com.example.kitchemate.R;
-import com.example.kitchemate.activity.MainActivity;
 import com.example.kitchemate.activity.RecipeDetailsActivity;
 import com.example.kitchemate.adapter.RecipeAdapter;
 import com.example.kitchemate.api.ApiClient;
