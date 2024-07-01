@@ -1,6 +1,7 @@
 package com.example.kitchemate.fragment;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kitchemate.R;
 import com.example.kitchemate.activity.FoundRecipesActivity;
+import com.example.kitchemate.component.IngredientListComponentFactory;
 
 import java.util.ArrayList;
 
@@ -78,51 +80,15 @@ public class FindRecipeFragment extends Fragment {
 
     public void addIngredient(View view) {
         EditText editTextIngredient = getView().findViewById(R.id.ingrEditText);
+        IngredientListComponentFactory factory = new IngredientListComponentFactory();
         final String ingredientName = editTextIngredient.getText().toString().trim()
                 .toLowerCase().replaceAll("[^a-zA-Zа-яА-ЯёЁ]", "");
 
-        if (!ingredientName.isEmpty()) {
-
-            ingredientNamesList.add(ingredientName);
-
-            LinearLayout ingredientListItem = new LinearLayout(getContext());
-            ingredientListItem.setOrientation(LinearLayout.HORIZONTAL);
-            ingredientListItem.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
-
-            TextView textViewIngredient = new TextView(getContext());
-            textViewIngredient.setPadding(64,2,2,2);
-            textViewIngredient.setText(ingredientName);
-            textViewIngredient.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    1));
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0,0,8,0);
-            Button deleteButton = new Button(getContext());
-            deleteButton.setText("✖");
-            deleteButton.setTextColor(getResources().getColor(R.color.gray));
-            deleteButton.setBackground(getResources().getDrawable(R.drawable.button_primary_selector));
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ingredientListContainer.removeView(ingredientListItem);
-                    ingredientNamesList.remove(ingredientName);
-                }
-            });
-
-            // Заполняем элемент списка ингридиентов
-            // Формат: Текст -> "Название х" <- Кнопка
-            ingredientListItem.addView(textViewIngredient);
-            ingredientListItem.addView(deleteButton);
-            ingredientListContainer.addView(ingredientListItem);
-
-            editTextIngredient.setText("");
+        if (ingredientName.isEmpty()) {
+            return;
         }
+        ingredientNamesList.add(ingredientName);
+        factory.createNewIngredientComponent(ingredientName, getContext(), ingredientNamesList,
+                ingredientListContainer, editTextIngredient, getResources());
     }
 }
